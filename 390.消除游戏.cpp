@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=390 lang=cpp
- *
+ * @tags = greedy
  * [390] 消除游戏
  */
 
