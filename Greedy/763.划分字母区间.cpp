@@ -9,39 +9,40 @@
 // @lc code=start
 class Solution {
 public:
-    // vector<int> partitionLabels(string S) {
-    //     vector<int> result;
-    //     unordered_map<char, int> map; //记录char c 和其最后出现位置的 map模板类
-    //     int start = 0, end = 0;
-    //     for (int i = 0; i < S.size(); i ++) {
-    //         map[S[i]] = i;   //记录对应字母出现的最后位置
-    //     }
-    //     for (int i = 0; i < S.size(); i ++) {
-    //         end = max(end, map[S[i]]);  //使end达到最大，如果遍历到最远的end处进行一次分割，此次分割是局部最优
-    //         if (i == end) {
-    //             result.push_back(end - start + 1);
-    //             start = i + 1;
-    //         }
-    //     }
-    //     return result;
-    // } //69.93% runtime || 36.5% mu -6.6 MB
     vector<int> partitionLabels(string S) {
-        int last[26];
-        int length = S.size();
-        for (int i = 0; i < length; i++) {
-            last[S[i] - 'a'] = i;
-        }
-        vector<int> partition;
+        vector<int> result;
+        unordered_map<char, int> map; //记录char c 和其最后出现位置的 map模板类
         int start = 0, end = 0;
-        for (int i = 0; i < length; i++) {
-            end = max(end, last[S[i] - 'a']);
+        int n = S.size();
+        for (int i = 0; i < n; i ++) {
+            map[S[i]] = i;   //记录对应字母出现的最后位置
+        }
+        for (int i = 0; i < n; i ++) {
+            end = max(end, map[S[i]]);  //使end达到最大，如果遍历到最远的end处进行一次分割，此次分割是局部最优
             if (i == end) {
-                partition.push_back(end - start + 1);
-                start = end + 1;
+                result.push_back(end - start + 1);
+                start = i + 1;
             }
         }
-        return partition;
-}
+        return result;
+    } //69.93% runtime || 36.5% mu -6.6 MB
+//     vector<int> partitionLabels(string S) {
+//         int last[26];
+//         int length = S.size();
+//         for (int i = 0; i < length; i++) {
+//             last[S[i] - 'a'] = i;
+//         }
+//         vector<int> partition;
+//         int start = 0, end = 0;
+//         for (int i = 0; i < length; i++) {
+//             end = max(end, last[S[i] - 'a']);
+//             if (i == end) {
+//                 partition.push_back(end - start + 1);
+//                 start = end + 1;
+//             }
+//         }
+//         return partition;
+// }
 }; //mu - 6.2 MB
 // @lc code=end
 
