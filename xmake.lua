@@ -1,7 +1,7 @@
-set_languages("cxx23")
+set_languages("c++23")
 -- set toolset
-set_toolset("cxx", "clang")
-set_toolset("ld", "clang++")
+--set_toolset("cxx", "clang")
+--set_toolset("ld", "clang++")
 
 target("test")
     set_kind("binary")
